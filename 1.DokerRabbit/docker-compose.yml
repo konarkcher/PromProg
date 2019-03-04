@@ -1,0 +1,14 @@
+version: '3'
+services:
+    producer:
+        build: producer
+        depends_on:
+            - query
+    query:
+        image: rabbitmq:3.7.9-alpine
+        ports:
+            - "5672:5672"
+    consumer:
+        build: consumer
+        depends_on:
+            - query
